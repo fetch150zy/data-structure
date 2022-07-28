@@ -58,5 +58,6 @@ void test_list(void)
     putchar('\n');
     ClearList(&SLP);            // free SLP
     printf("%p\n", SLP);
+    
     return ;
 }
