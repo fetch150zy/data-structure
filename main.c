@@ -16,12 +16,12 @@
 #include "./include/list.h"
 #endif
 
-void test_list(void);
+void TestList(void);
 
 int main(int argc, char** argv)
 {
     #ifdef _LIST_
-    test_list();
+    TestList();
     #endif
 
     return 0;
@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 /**
  * @brief test list
  */
-void test_list(void)
+void TestList(void)
 {
     SqList* SLP = InitList();
     puts(ListIsEmpty(*SLP) ? "the SL is empty." : "the SL is not empty.");
@@ -58,6 +58,6 @@ void test_list(void)
     putchar('\n');
     ClearList(&SLP);            // free SLP
     printf("%p\n", SLP);
-    
+
     return ;
 }
