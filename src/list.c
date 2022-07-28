@@ -15,13 +15,13 @@
 
 
 /**
- * @brief initialize sequence table
+ * @brief initialize sequence list
  * 
  * @param SLP the pointer of SqList variable
  */
 SqList* InitList(void)
 {
-    SqList *SLP = (SqList *)malloc(sizeof(SqList));
+    auto SqList *SLP = (SqList *)malloc(sizeof(SqList));
     memset(SLP->data, 0, sizeof(SLP->data));
     SLP->length = 0;
     return SLP;
@@ -29,7 +29,7 @@ SqList* InitList(void)
 
 
 /**
- * @brief Check if the sequence table is empty
+ * @brief Check if the sequence list is empty
  * 
  * @param SL SqList variable
  * @return true :table is empty
@@ -63,15 +63,15 @@ size_t ListLength(SqList SL)
 elemType GetElem(SqList SL, int pos)
 {
     if (pos < 1)    {
-        puts("The position is out of bounds(pos < 1). Query error in function GetElem().");
+        puts("\nThe position is out of bounds(pos < 1). Query error in function GetElem().");
         return ERROR_VAL;
     }
     else if (pos > SL.length)    {
-        puts("The position is out of bounds(pos > SL.length). Query error in function GetElem().");
+        puts("\nThe position is out of bounds(pos > SL.length). Query error in function GetElem().");
         return ERROR_VAL;
     }
     else if (ListIsEmpty(SL))    {
-        puts("The SqList is empty. Query error in function GetElem().");
+        puts("\nThe SqList is empty. Query error in function GetElem().");
         return ERROR_VAL;
     }
     else    {
