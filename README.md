@@ -133,22 +133,3 @@
 
 
 
-
-
-## 3.Linear table
-
-
-
-
-
-## 4.stacks and queues
-
-## 5.String
-
-## 6.Tree
-
-## 7.Graph Theory
-
-## 8.Search
-
-## 9.Sort
