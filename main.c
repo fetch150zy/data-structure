@@ -10,7 +10,8 @@
  */
 
 // #define _LIST_
-#define _LINK_
+// #define _LINK_
+#define _STATIC_LINK_
 
 #ifdef _LIST_
 #include "./include/list.h"
@@ -18,9 +19,13 @@
 #ifdef _LINK_
 #include "./include/link.h"
 #endif
+#ifdef _STATIC_LINK_
+#include "./include/static_link.h"
+#endif
 
 void TestList(void);
 void TestLink(void);
+void TestStaticLink(void);
 
 int main(int argc, char** argv)
 {
@@ -30,6 +35,10 @@ int main(int argc, char** argv)
 
     #ifdef _LINK_
     TestLink();
+    #endif
+
+    #ifdef _STATIC_LINK_
+    TestStaticLink();
     #endif
 
     return 0;
@@ -99,5 +108,41 @@ void TestLink(void)
 
     ClearLinkList(&LP);
     puts(LinkIsEmpty(*LP) ? "empty." : "not empty");
+}
+#endif
+
+
+#if defined(_STATIC_LINK_)
+/**
+ * @brief test static link list
+ */
+void TestStaticLink(void)
+{
+    auto StaticLinkList SLL;
+    InitStaticLinkList(SLL);
+    for (int i = 0; i < MAX_SIZE; ++i)
+    {
+        printf("data: %d cur: %d\n", SLL[i].data, SLL[i].cur);
+    }
+
+    printf("Length is: %d.\n", StaticLinkListLength(SLL));
+
+    StaticLinkListInsert(SLL, 1, 100);
+    StaticLinkListInsert(SLL, 2, 100);
+    StaticLinkListInsert(SLL, 3, 100);
+    StaticLinkListInsert(SLL, 20, 100);
+
+    StaticLinkListDelete(SLL, 2);
+
+    StaticLinkListInsert(SLL, 2, 200);
+
+    for (int i = 0; i < MAX_SIZE; ++i)
+    {
+        printf("data: %d cur: %d\n", SLL[i].data, SLL[i].cur);
+    }
+
+    printf("Length is: %d.\n", StaticLinkListLength(SLL));
+
+    return ;
 }
 #endif
