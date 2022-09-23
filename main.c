@@ -1,7 +1,7 @@
 /**
  * @file main.c
- * @author your name (you@domain.com)
- * @brief 
+ * @author fetch150zy (Mars_zhewei@outlook.com)
+ * @brief just a test
  * @version 0.1
  * @date 2022-07-28
  * 
@@ -9,9 +9,6 @@
  * 
  */
 
-// #define _LIST_
-// #define _LINK_
-#define _STATIC_LINK_
 
 #ifdef _LIST_
 #include "./include/list.h"
@@ -45,7 +42,7 @@ int main(int argc, char** argv)
 }
 
 
-#if defined(_LIS_)
+#if defined(_LIST_)
 /**
  * @brief test list
  */
