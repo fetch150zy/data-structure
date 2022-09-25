@@ -10,10 +10,6 @@ List(APPEND LIBS data_structure_libs)
 
 add_executable(res main.c)
 
-target_include_directories(res PRIVATE
-                        ${CMAKE_CURRENT_SOURCE_DIR}/include
-                        )
-
 target_link_libraries(res PRIVATE
                     ${LIBS}
                     )

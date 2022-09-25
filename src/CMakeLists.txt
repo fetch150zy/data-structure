@@ -1,5 +1,7 @@
 add_library(data_structure_libs STATIC empty.c)
 
+target_include_directories(data_structure_libs PUBLIC ${CMAKE_SOURCE_DIR}/include)
+
 option(USE_LIST "use sequence list" OFF)
 option(USE_LINK "use link list" OFF)
 option(USE_STATIC_LINK "use static link list without point" OFF)

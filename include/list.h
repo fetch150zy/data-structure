@@ -1,7 +1,7 @@
 /**
  * @file list.h
  * @author fetcha150zy (Mars_zhewei@outlook.com)
- * @brief header file of sequence table
+ * @brief header file of sequence list
  * @version 0.1
  * @date 2022-07-28
  * 
@@ -9,33 +9,35 @@
  * 
  */
 
-#ifndef _LIST_H_
-#define _LIST_H_
+
+#ifndef LIST_H_
+#define LIST_H_
+
 
 #include "list.h"
+
+
 #include <stdio.h>
 #include <stdbool.h>
 
-#define ERROR_VAL -1
-#define ERROR_POS -1
 
 #define MAX_SIZE 100
 typedef int elemType;
-/* ADT of sequence table */
-typedef struct 
-{
-    elemType data[MAX_SIZE];    // store elems
-    size_t length;              // the number of stored elems
-}SqList;
+/* ADT of sequence list */
+struct sqList {
+        elemType data[MAX_SIZE];    // store elems
+        size_t length;              // the number of stored elems
+};
 
-extern SqList* InitList(void);
-extern bool ListIsEmpty(SqList SL);
-extern size_t ListLength(SqList SL);
-extern elemType GetElem(SqList SL, int pos);
-extern int LocateElem(SqList SL, elemType elem);
-extern bool ListInsert(SqList* SLP, int pos, elemType elem);
-extern bool ListDelete(SqList* SLP, int pos);
-extern void ClearList(SqList** SLPP);
+
+extern struct sqList* init_list(void);
+extern size_t get_list_length(struct sqList SL);
+extern elemType get_element_val(struct sqList SL, int pos);
+extern int get_element_index(struct sqList SL, elemType elem);
+extern bool insert(struct sqList* SLP, int pos, elemType elem);
+extern bool delete(struct sqList* SLP, int pos);
+extern void clear_list(struct sqList** SLPP);
+
 
 #endif
 

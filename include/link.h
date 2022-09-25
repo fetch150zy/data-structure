@@ -1,38 +1,43 @@
 /**
  * @file link.h
  * @author fetch150zy (Mars_zhewei@outlook.com)
- * @brief head file for link list
+ * @brief header file for link list
  * @version 0.1
  * @date 2022-07-28
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
-#ifndef _LINK_H_
-#define _LINK_H_
+
+#ifndef LINK_H_
+#define LINK_H_
+
 
 #include "link.h"
+
+
 #include <stdio.h>
 #include <stdbool.h>
 
-#define ERROR_VAL -1
 
 typedef int elemType;
 /* ADT of link list */
-typedef struct Node
-{
-    elemType data;          // element
-    struct Node* next;      // pointer to next node
-}LinkList, *LinkListPtr;
+struct linkList {
+        elemType data;         // element
+        struct linkList *next; // pointer to next node
+};
 
-extern LinkListPtr InitLink(void);
-extern bool LinkIsEmpty(LinkList L);
-extern elemType GetElem(LinkList L, int pos);
-extern bool LinkListInsert(LinkListPtr* LPP, int pos, elemType elem);
-extern bool LinkListDelete(LinkListPtr* LPP, int pos);
-extern LinkListPtr CreateLinkListHead(size_t size);
-extern LinkListPtr CreateLinkListTail(size_t size);
-extern bool ClearLinkList(LinkListPtr* LPP);
+
+extern struct linkList *init_link(void);
+extern bool is_empty_link(struct linkList L);
+extern elemType get_element_val(struct linkList L, int pos);
+extern bool insert(struct linkList *LP, int pos, elemType elem);
+extern bool delate(struct linkList *LP, int pos);
+extern struct linkList *head_create(size_t size);
+extern struct linkList *tail_create(size_t size);
+extern void clear_link(struct linkList **LPP);
+
 
 #endif
+

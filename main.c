@@ -4,142 +4,140 @@
  * @brief just a test
  * @version 0.1
  * @date 2022-07-28
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 
+
+#if __STDC_VERSION__ != 201112L
+#error Not C11
+#endif
+
+
+
 #ifdef _LIST_
-#include "./include/list.h"
+#include "list.h"
 #endif
 #ifdef _LINK_
-#include "./include/link.h"
+#include "link.h"
 #endif
 #ifdef _STATIC_LINK_
-#include "./include/static_link.h"
+#include "static_link.h"
 #endif
 
-void TestList(void);
-void TestLink(void);
-void TestStaticLink(void);
 
-int main(int argc, char** argv)
+
+void test_list(void);
+void test_link(void);
+void test_static_link(void);
+
+
+
+int main(int argc, char **argv)
 {
-    #ifdef _LIST_
-    TestList();
-    #endif
+#ifdef _LIST_
+        test_list();
+#endif
 
-    #ifdef _LINK_
-    TestLink();
-    #endif
+#ifdef _LINK_
+        test_link();
+#endif
 
-    #ifdef _STATIC_LINK_
-    TestStaticLink();
-    #endif
+#ifdef _STATIC_LINK_
+        test_static_link();
+#endif
 
-    return 0;
+        return 0;
 }
+
 
 
 #if defined(_LIST_)
 /**
  * @brief test list
  */
-void TestList(void)
+void test_list(void)
 {
-    SqList* SLP = InitList();
-    puts(ListIsEmpty(*SLP) ? "the SL is empty." : "the SL is not empty.");
-    for (int i = 1; i <= 20; ++i)
-    {
-        ListInsert(SLP, i, i+100);
-        printf("the length of SL is %zd.\n", ListLength(*SLP));
-    }
-    ListInsert(SLP, 3, 200);
-    ListInsert(SLP, 23, 3);
-    ListInsert(SLP, 22, 300);
-    ListInsert(SLP, 0, 3);
-    for (int i = 1; i <= ListLength(*SLP); ++i)
-    {
-        printf("%d ", GetElem(*SLP, i));
-    }
-    putchar('\n');
-    ListDelete(SLP, 20);
-    ListDelete(SLP, 0);
-    ListDelete(SLP, 21);
-    for (int i = 1; i <= ListLength(*SLP); ++i)
-    {
-        printf("%d ", GetElem(*SLP, i));
-    }
-    putchar('\n');
-    ClearList(&SLP);            // free SLP
-    printf("%p\n", SLP);
+        struct sqList *SLP = init_list();
+        for (int i = 1; i <= 20; ++i) {
+                insert(SLP, i, i + 100);
+                printf("the length of SL is %zd.\n", get_list_length(*SLP));
+        }
+        insert(SLP, 3, 200);
+        insert(SLP, 23, 3);
+        insert(SLP, 22, 300);
+        insert(SLP, 0, 3);
+        for (int i = 1; i <= get_list_length(*SLP); ++i)
+                printf("%d ", get_element_val(*SLP, i));
+        putchar('\n');
+        delete (SLP, 20);
+        delete (SLP, 0);
+        delete (SLP, 21);
+        for (int i = 1; i <= get_list_length(*SLP); ++i)
+                printf("%d ", get_element_val(*SLP, i));
+        putchar('\n');
+        printf("%d\n", get_element_index(*SLP, 102));
+        printf("%d\n", get_element_index(*SLP, 12));
+        clear_list(&SLP); // free SLP
+        printf("%p\n", SLP);
 
-    return ;
+        return;
 }
-#endif
 
 
-#if defined(_LINK_)
+
+#elif defined(_LINK_)
 /**
  * @brief test link list
  */
-void TestLink(void)
+void test_link(void)
 {
-    LinkListPtr LP = InitLink();
-    puts(LinkIsEmpty(*LP) ? "empty." : "not empty");
-    LP = CreateLinkListTail(10UL);
-    for (int i = 1; i < 12; ++i)
-    {
-        printf("%d ", GetElem(*LP, i));
-    }
-    putchar('\n');
-    LinkListInsert(&LP, 0, 1);
-    LinkListInsert(&LP, 3, 3);
-    LinkListInsert(&LP, 13, 11);
-    for (int i = 1; i < 13; ++i)
-    {
-        printf("%d ", GetElem(*LP, i));
-    }
-    putchar('\n');
+        struct linkList *LP = tail_create(10UL);
+        for (int i = 1; i < 12; ++i)
+                printf("%d ", get_element_val(*LP, i));
+        putchar('\n');
+        insert(LP, 0, 1);
+        insert(LP, 3, 3);
+        insert(LP, 13, 11);
+        for (int i = 1; i < 12; ++i)
+                printf("%d ", get_element_val(*LP, i));
+        putchar('\n');
 
-    ClearLinkList(&LP);
-    puts(LinkIsEmpty(*LP) ? "empty." : "not empty");
+        clear_link(&LP);
+        printf("%p\n", LP);
 }
-#endif
 
 
-#if defined(_STATIC_LINK_)
+
+#elif defined(_STATIC_LINK_)
 /**
  * @brief test static link list
  */
-void TestStaticLink(void)
+void test_static_link(void)
 {
-    auto StaticLinkList SLL;
-    InitStaticLinkList(SLL);
-    for (int i = 0; i < MAX_SIZE; ++i)
-    {
-        printf("data: %d cur: %d\n", SLL[i].data, SLL[i].cur);
-    }
+        auto struct node SLL[MAX_SIZE];
+        init_static_link(SLL);
+        for (int i = 0; i < MAX_SIZE; ++i)
+                printf("data: %d cur: %d\n", SLL[i].data, SLL[i].cur);
 
-    printf("Length is: %d.\n", StaticLinkListLength(SLL));
+        printf("Length is: %d.\n", get_static_link_length(SLL));
 
-    StaticLinkListInsert(SLL, 1, 100);
-    StaticLinkListInsert(SLL, 2, 100);
-    StaticLinkListInsert(SLL, 3, 100);
-    StaticLinkListInsert(SLL, 20, 100);
+        insert(SLL, 1, 100);
+        insert(SLL, 2, 100);
+        insert(SLL, 3, 100);
+        insert(SLL, 20, 100);
 
-    StaticLinkListDelete(SLL, 2);
+        delete(SLL, 2);
 
-    StaticLinkListInsert(SLL, 2, 200);
+        insert(SLL, 2, 200);
 
-    for (int i = 0; i < MAX_SIZE; ++i)
-    {
-        printf("data: %d cur: %d\n", SLL[i].data, SLL[i].cur);
-    }
+        for (int i = 0; i < MAX_SIZE; ++i)
+                printf("data: %d cur: %d\n", SLL[i].data, SLL[i].cur);
 
-    printf("Length is: %d.\n", StaticLinkListLength(SLL));
+        printf("Length is: %d.\n", get_static_link_length(SLL));
 
-    return ;
+        return;
 }
 #endif
