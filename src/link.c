@@ -65,7 +65,7 @@ elemType get_element_val(struct linkList L, int pos)
                 cnt++;
         }
         if (NULL == p || cnt > pos) {
-                puts("Get element error in function get_element_val().");
+                puts("*** Get element error in function get_element_val().");
                 return ERROR_VAL;
         }
         return p->data;
@@ -82,7 +82,7 @@ bool insert(struct linkList *LP, int pos, elemType elem)
                 cnt++;
         }
         if (NULL == p || cnt > pos) {
-                puts("Insert element error in function insert().");
+                puts("*** Insert element error in function insert().");
                 return false;
         }
         auto struct linkList *temp = (struct linkList *)malloc(sizeof(struct linkList));
@@ -103,7 +103,7 @@ bool delete(struct linkList *LP, int pos)
                 cnt++;
         }
         if (NULL == p->next || cnt > pos) {
-                puts("\nDelete element error in function LinkListDelete().");
+                puts("*** Delete element error in function delete().");
                 return false;
         }
 

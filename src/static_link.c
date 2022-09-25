@@ -60,7 +60,7 @@ int get_static_link_length(struct node *SLL)
 bool insert(struct node *SLL, int cur, elemType elem)
 {
         if (cur < 1 || cur > get_static_link_length(SLL) + 1) {
-                puts("The cursor is out of bounds. Insert error in function insert().");
+                puts("*** The cursor is out of bounds. Insert error in function insert().");
                 return false;
         }
         auto int next = MAX_SIZE - 1, freeCur = malloc_self(SLL);
@@ -72,7 +72,7 @@ bool insert(struct node *SLL, int cur, elemType elem)
                 SLL[next].cur = freeCur;
                 return true;
         }
-        puts("Something wrong in function insert().");
+        puts("*** Something wrong in function insert().");
         return false;
 }
 
@@ -91,7 +91,7 @@ static inline void free_self(struct node *SLL, int cur)
 bool delete(struct node *SLL, int cur)
 {
         if (cur < 1 || cur > get_static_link_length(SLL)) {
-                puts("The cursor is out of bounds. Delete error in function delete().");
+                puts("*** The cursor is out of bounds. Delete error in function delete().");
                 return false;
         }
         auto int next = MAX_SIZE - 1;

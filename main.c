@@ -26,12 +26,16 @@
 #ifdef _STATIC_LINK_
 #include "static_link.h"
 #endif
+#ifdef _STACK_
+#include "stack.h"
+#endif
 
 
 
 void test_list(void);
 void test_link(void);
 void test_static_link(void);
+void test_stack(void);
 
 
 
@@ -47,6 +51,10 @@ int main(int argc, char **argv)
 
 #ifdef _STATIC_LINK_
         test_static_link();
+#endif
+
+#ifdef _STACK_
+        test_stack();
 #endif
 
         return 0;
@@ -140,4 +148,47 @@ void test_static_link(void)
 
         return;
 }
+
+
+
+
+#elif defined(_STACK_)
+/**
+ * @brief test stack
+ * 
+ */
+void test_stack(void)
+{
+        struct sqStack *SP = init_stack();
+        printf("stack 1 is %s\n", is_empty_stack(*SP, left_stack) ? "empty" : "not empty");
+        printf("stack 2 is %s\n", is_empty_stack(*SP, right_stack) ? "empty" : "not empty");
+        for (int i = 1; i <= 10; ++i) {
+                push(SP, i + 100, left_stack);
+                push(SP, i + 200, right_stack);
+        }
+        printf("stack 1 is %s\n", is_empty_stack(*SP, left_stack) ? "empty" : "not empty");
+        printf("stack 2 is %s\n", is_empty_stack(*SP, right_stack) ? "empty" : "not empty");
+
+        printf("%d\n", get_top_elem(*SP, left_stack));
+        printf("%d\n", get_top_elem(*SP, right_stack));
+
+        for (int i = 1; i <= 5; ++i) {
+                elemType elem;
+                pop(SP, &elem, left_stack);
+                printf("%d ", elem);
+        }
+        printf("\n%d\n", get_top_elem(*SP, left_stack));
+
+        for (int i = 1; i <= 5; ++i) {
+                elemType elem;
+                pop(SP, &elem, right_stack);
+                printf("%d ", elem);
+        }
+        printf("\n%d\n", get_top_elem(*SP, right_stack));
+
+        clear_stack(&SP);
+        printf("%p\n", SP);
+        return;
+}
+
 #endif

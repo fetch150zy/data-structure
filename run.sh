@@ -21,3 +21,10 @@ echo -e "\n***********************************************\n*"
 echo -e "*\n*           Test static link                 *\n*"
 echo -e "*\n***********************************************\n"
 cmake .. -DUSE_STATIC_LINK=ON && make && ./res; rm -rf *
+
+
+# for test stack
+echo -e "\n***********************************************\n*"
+echo -e "*\n*              Test stack                    *\n*"
+echo -e "*\n***********************************************\n"
+cmake .. -DUSE_STACK=ON && make && ./res; rm -rf *
