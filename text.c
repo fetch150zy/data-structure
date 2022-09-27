@@ -1,51 +1,5 @@
-/**
- * @file main.c
- * @author fetch150zy (Mars_zhewei@outlook.com)
- * @brief just a test
- * @version 0.1
- * @date 2022-07-28
- *
- * @copyright Copyright (c) 2022
- *
- */
 
-
-
-#if __STDC_VERSION__ != 201112L
-// #error Not C11
-#endif
-
-
-
-#ifdef _LIST_
-#include "list.h"
-#endif
-#ifdef _LINK_
-#include "link.h"
-#endif
-#ifdef _STATIC_LINK_
-#include "static_link.h"
-#endif
-#ifdef _STACK_
-#include "stack.h"
-#endif
-#ifdef _LINK_STACK_
-#include "link_stack.h"
-#endif
-#ifdef _QUEUE_
-#include "queue.h"
-#endif
-
-
-
-void test_list(void);
-void test_link(void);
-void test_static_link(void);
-void test_stack(void);
-void test_link_stack(void);
-void test_queue(void);
-
-
+#include "../include/text.h"
 
 int main(int argc, char **argv)
 {
@@ -263,4 +217,3 @@ void test_queue(void)
 }
 
 #endif
-
