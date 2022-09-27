@@ -2,12 +2,7 @@
 #define TEXT_H_
 
 
-
-
-#if __STDC_VERSION__ != 201112L
-#error Not C11
-#endif
-
+#include "test.h"
 
 
 #ifdef _LIST_
@@ -30,18 +25,13 @@
 #endif
 
 
-
-void test_list(void);
-void test_link(void);
-void test_static_link(void);
-void test_stack(void);
-void test_link_stack(void);
-void test_queue(void);
-
-
-
-
-
+extern void test_list(void);
+extern void test_link(void);
+extern void test_static_link(void);
+extern void test_stack(void);
+extern void test_link_stack(void);
+extern void test_queue(void);
 
 
 #endif
+

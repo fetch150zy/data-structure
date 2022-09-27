@@ -1,34 +1,16 @@
+/**
+ * @file test.c
+ * @author fetch150zy (Mars_zhewei@outlook.com)
+ * @brief for test
+ * @version 0.1
+ * @date 2022-09-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
-#include "../include/text.h"
 
-int main(int argc, char **argv)
-{
-#ifdef _LIST_
-        test_list();
-#endif
-
-#ifdef _LINK_
-        test_link();
-#endif
-
-#ifdef _STATIC_LINK_
-        test_static_link();
-#endif
-
-#ifdef _STACK_
-        test_stack();
-#endif
-
-#ifdef _LINK_STACK_
-        test_link_stack();
-#endif
-
-#ifdef _QUEUE_
-        test_queue();
-#endif
-
-        return 0;
-}
+#include "test.h"
 
 
 
