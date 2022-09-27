@@ -6,6 +6,7 @@ option(USE_LIST "use sequence list" OFF)
 option(USE_LINK "use link list" OFF)
 option(USE_STATIC_LINK "use static link list without point" OFF)
 option(USE_STACK "use stack" OFF)
+option(USE_LINK_STACK "use link stack" OFF)
 
 if(USE_LIST)
         target_compile_definitions(data_structure_libs INTERFACE "_LIST_")
@@ -27,4 +28,10 @@ elseif(USE_STACK)
         add_library(stack stack.c)
         target_link_libraries(data_structure_libs INTERFACE stack)
 
+elseif(USE_LINK_STACK)
+        target_compile_definitions(data_structure_libs INTERFACE "_LINK_STACK_")
+        add_library(link_stack link_stack.c)
+        target_link_libraries(data_structure_libs INTERFACE link_stack)
+
 endif()
+

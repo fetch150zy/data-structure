@@ -29,6 +29,9 @@
 #ifdef _STACK_
 #include "stack.h"
 #endif
+#ifdef _LINK_STACK_
+#include "link_stack.h"
+#endif
 
 
 
@@ -36,6 +39,7 @@ void test_list(void);
 void test_link(void);
 void test_static_link(void);
 void test_stack(void);
+void test_link_stack(void);
 
 
 
@@ -55,6 +59,10 @@ int main(int argc, char **argv)
 
 #ifdef _STACK_
         test_stack();
+#endif
+
+#ifdef _LINK_STACK_
+        test_link_stack();
 #endif
 
         return 0;
@@ -191,4 +199,30 @@ void test_stack(void)
         return;
 }
 
+
+#elif defined(_LINK_STACK_)
+/**
+ * @brief test link stack
+ * 
+ */
+void test_link_stack(void)
+{
+        struct linkStack *LSP = init_stack();
+        for (int i = 1; i <= 10; ++i) {
+                push(LSP, i + 100);
+        }
+        printf("%d\n", get_top_val(*LSP));
+        for (int i = 1; i <= 5; ++i) {
+                elemType elem;
+                pop(LSP, &elem);
+                printf("%d ", elem);
+        }
+        putchar('\n');
+        printf("%d\n", get_top_val(*LSP));
+
+        clear_stack(&LSP);
+        printf("%p\n", LSP);
+}
+
 #endif
+
