@@ -1,5 +1,5 @@
 
-#include "../include/text.h"
+#include "text.h"
 
 int main(int argc, char **argv)
 {
