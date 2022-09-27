@@ -35,3 +35,10 @@ echo -e "\n***********************************************\n*"
 echo -e "*\n*            Test link stack                 *\n*"
 echo -e "*\n***********************************************\n"
 cmake .. -DUSE_LINK_STACK=ON && make && ./res; rm -rf *
+
+
+# for test link stack
+echo -e "\n***********************************************\n*"
+echo -e "*\n*               Test queue                   *\n*"
+echo -e "*\n***********************************************\n"
+cmake .. -DUSE_QUEUE=ON && make && ./res; rm -rf *

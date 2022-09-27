@@ -32,6 +32,9 @@
 #ifdef _LINK_STACK_
 #include "link_stack.h"
 #endif
+#ifdef _QUEUE_
+#include "queue.h"
+#endif
 
 
 
@@ -40,6 +43,7 @@ void test_link(void);
 void test_static_link(void);
 void test_stack(void);
 void test_link_stack(void);
+void test_queue(void);
 
 
 
@@ -63,6 +67,10 @@ int main(int argc, char **argv)
 
 #ifdef _LINK_STACK_
         test_link_stack();
+#endif
+
+#ifdef _QUEUE_
+        test_queue();
 #endif
 
         return 0;
@@ -222,6 +230,36 @@ void test_link_stack(void)
 
         clear_stack(&LSP);
         printf("%p\n", LSP);
+}
+
+
+
+#elif defined(_QUEUE_)
+/**
+ * @brief test queue
+ * 
+ */
+void test_queue(void)
+{
+        struct sqQueue *SQP = init_queue();
+        printf("queue length : %zd\n", get_queue_length(*SQP));
+        for (int i = 1; i <= 10; ++i) {
+                enque(SQP, i + 100);
+        }
+        printf("front elements : %d\n", get_front_elem(*SQP));
+        printf("back elements : %d\n", get_back_elem(*SQP));
+
+        for (int i = 1; i <= 5; ++i) {
+                elemType elem;
+                deque(SQP, &elem);
+                printf("%d ", elem);
+        }
+        putchar('\n');
+        printf("front elements : %d\n", get_front_elem(*SQP));
+        printf("back elements : %d\n", get_back_elem(*SQP));
+
+        clear_queue(&SQP);
+        printf("%p\n", SQP);
 }
 
 #endif
