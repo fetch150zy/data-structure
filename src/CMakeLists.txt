@@ -20,9 +20,9 @@ option(USE_LINK_STACK "use link stack" OFF)
 option(USE_QUEUE "use queue" OFF)
 option(USE_LINK_QUEUE "use link queue" OFF)
 
-set(op_list USE_LIST USE_LINK USE_STATIC_LINK USE_STACK USE_LINK_STACK USE_QUEUE USE_LINK_QUEUE USE_STRING)
-set(macro_list "_LIST_" "_LINK_" "_STATIC_LINK_" "_STACK_" "_LINK_STACK_" "_QUEUE_" "_LINK_QUEUE_" "_STRING_")
-set(src_list "list.c" "link.c" "static_link.c" "stack.c" "link_stack.c" "queue.c" "link_queue.c" "string.c")
+set(op_list USE_LIST USE_LINK USE_STATIC_LINK USE_STACK USE_LINK_STACK USE_QUEUE USE_LINK_QUEUE USE_STRING USE_BIN_TREE)
+set(macro_list "_LIST_" "_LINK_" "_STATIC_LINK_" "_STACK_" "_LINK_STACK_" "_QUEUE_" "_LINK_QUEUE_" "_STRING_" "_BIN_TREE_")
+set(src_list "list.c" "link.c" "static_link.c" "stack.c" "link_stack.c" "queue.c" "link_queue.c" "string.c" "binary_tree.c")
 
 foreach(item IN ZIP_LISTS op_list macro_list src_list)
         op_link(${item_0} ${item_1} ${item_2})

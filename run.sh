@@ -56,3 +56,10 @@ echo -e "\n***********************************************\n*"
 echo -e "*\n*               Test string                  *\n*"
 echo -e "*\n***********************************************\n"
 cmake .. -DUSE_STRING=ON && make && ./res; rm -rf *
+
+
+# for test binary tree
+echo -e "\n***********************************************\n*"
+echo -e "*\n*             Test bin tree                  *\n*"
+echo -e "*\n***********************************************\n"
+cmake .. -DUSE_BIN_TREE=ON && make && ./res; rm -rf *

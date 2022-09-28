@@ -252,6 +252,54 @@ void test_string(void)
         printf("kmp : %d\n", kmp(s, t, 1));
 }
 
+
+#elif defined(_BIN_TREE_)
+/**
+ * @brief test binary tree
+ * 
+ */
+void test_bin_tree(void)
+{
+        struct biNode *tree = NULL;
+        FILE *fp = fopen("../data/bitree.bin", "rb");
+        init_tree(&tree, fp);
+        printf("%p\n", tree);
+        clear_tree(&tree);
+        printf("%p\n", tree);
+
+        getc(fp);
+        init_tree(&tree, fp);
+        pre_order_traverse(tree);
+        putchar('\n');
+        in_order_traverse(tree);
+        putchar('\n');
+        post_order_traverse(tree);
+        putchar('\n');
+        printf("nodes: %zd\n", get_bitree_nodes());
+        printf("depth: %zd\n", get_bitree_depth(tree));
+        clear_tree(&tree);
+        printf("%p\n", tree);
+        printf("nodes: %zd\n", get_bitree_nodes());
+        printf("depth: %zd\n", get_bitree_depth(tree));
+        
+        getc(fp);
+        init_tree(&tree, fp);
+        pre_order_traverse(tree);
+        putchar('\n');
+        in_order_traverse(tree);
+        putchar('\n');
+        post_order_traverse(tree);
+        putchar('\n');
+        printf("nodes: %zd\n", get_bitree_nodes());
+        printf("depth: %zd\n", get_bitree_depth(tree));
+        clear_tree(&tree);
+        printf("%p\n", tree);
+        printf("nodes: %zd\n", get_bitree_nodes());
+        printf("depth: %zd\n", get_bitree_depth(tree));
+
+        fclose(fp);
+}
+
 #endif
 
 

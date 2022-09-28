@@ -29,6 +29,9 @@
 #ifdef _STRING_
 #include "string.h"
 #endif
+#ifdef _BIN_TREE_
+#include "binary_tree.h"
+#endif
 
 
 extern void test_list(void);
@@ -39,6 +42,7 @@ extern void test_link_stack(void);
 extern void test_queue(void);
 extern void test_link_queue(void);
 extern void test_string(void);
+extern void test_bin_tree(void);
 
 
 #endif

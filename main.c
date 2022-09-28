@@ -55,6 +55,10 @@ int main(int argc, char **argv)
         test_string();
 #endif
 
+#ifdef _BIN_TREE_
+        test_bin_tree();
+#endif
+
         return 0;
 }
 
