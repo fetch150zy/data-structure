@@ -23,6 +23,9 @@
 #ifdef _QUEUE_
 #include "queue.h"
 #endif
+#ifdef _LINK_QUEUE_
+#include "link_queue.h"
+#endif
 
 
 extern void test_list(void);
@@ -31,6 +34,7 @@ extern void test_static_link(void);
 extern void test_stack(void);
 extern void test_link_stack(void);
 extern void test_queue(void);
+extern void test_link_queue(void);
 
 
 #endif

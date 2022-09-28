@@ -47,6 +47,10 @@ int main(int argc, char **argv)
         test_queue();
 #endif
 
+#ifdef _LINK_QUEUE_
+        test_link_queue();
+#endif
+
         return 0;
 }
 

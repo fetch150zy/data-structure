@@ -10,8 +10,8 @@
  */
 
 
-#ifndef _STATIC_LINK_H_
-#define _STATIC_LINK_H_
+#ifndef STATIC_LINK_H_
+#define STATIC_LINK_H_
 
 
 #include "static_link.h"

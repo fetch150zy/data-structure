@@ -198,4 +198,33 @@ void test_queue(void)
         printf("%p\n", SQP);
 }
 
+
+
+#elif defined(_LINK_QUEUE_)
+/**
+ * @brief test link queue
+ * 
+ */
+void test_link_queue(void)
+{
+        struct linkQue *LQP = init_queue();
+        printf("%zd\n", get_queue_length(*LQP));
+        for (int i = 1; i <= 10; ++i)
+                enque(LQP, i + 100);
+        printf("%d %d\n", get_front_elem(*LQP), get_back_elem(*LQP));
+        printf("%zd\n", get_queue_length(*LQP));
+
+        for (int i = 1; i <= 5; ++i) {
+                elemType elem;
+                deque(LQP, &elem);
+                printf("%d ", elem);
+        }
+        putchar('\n');
+        printf("%d %d\n", get_front_elem(*LQP), get_back_elem(*LQP));
+        printf("%zd\n", get_queue_length(*LQP));
+
+        clear_queue(&LQP);
+        printf("%p\n", LQP);
+}
+
 #endif
