@@ -49,3 +49,10 @@ echo -e "\n***********************************************\n*"
 echo -e "*\n*            Test link queue                 *\n*"
 echo -e "*\n***********************************************\n"
 cmake .. -DUSE_LINK_QUEUE=ON && make && ./res; rm -rf *
+
+
+# for test string
+echo -e "\n***********************************************\n*"
+echo -e "*\n*               Test string                  *\n*"
+echo -e "*\n***********************************************\n"
+cmake .. -DUSE_STRING=ON && make && ./res; rm -rf *

@@ -1,5 +1,5 @@
-#ifndef TEXT_H_
-#define TEXT_H_
+#ifndef TEST_H_
+#define TEST_H_
 
 
 #include "test.h"
@@ -26,6 +26,9 @@
 #ifdef _LINK_QUEUE_
 #include "link_queue.h"
 #endif
+#ifdef _STRING_
+#include "string.h"
+#endif
 
 
 extern void test_list(void);
@@ -35,6 +38,7 @@ extern void test_stack(void);
 extern void test_link_stack(void);
 extern void test_queue(void);
 extern void test_link_queue(void);
+extern void test_string(void);
 
 
 #endif

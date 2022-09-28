@@ -227,4 +227,31 @@ void test_link_queue(void)
         printf("%p\n", LQP);
 }
 
+
+#elif defined(_STRING_)
+/**
+ * @brief test bf and kmp
+ * 
+ */
+void test_string(void)
+{
+        struct string s, t;
+        s.str = "abcabxxxxxabyzdscccc";
+        s.length = 20;
+        t.str = "abyzdsc";
+        t.length = 7;
+        printf("bf : %d\n", bf_match(s, t));
+        printf("kmp : %d\n", kmp(s, t, 1));
+        t.str = "xxxab";
+        t.length = 5;
+        printf("bf : %d\n", bf_match(s, t));
+        printf("kmp : %d\n", kmp(s, t, 1));
+        t.str = "abdc";
+        t.length = 4;
+        printf("bf : %d\n", bf_match(s, t));
+        printf("kmp : %d\n", kmp(s, t, 1));
+}
+
 #endif
+
+
